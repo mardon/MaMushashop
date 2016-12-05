@@ -39,7 +39,7 @@
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ URL::to('cart') }}"><i class="glyphicon glyphicon-shopping-cart"></i> Košík <span class="badge"></span></a></li>
+                <li><a href="{{ URL::to('cart') }}"><i class="glyphicon glyphicon-shopping-cart"></i> Košík <span class="badge">{{ $cart_qty }}</span></a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
