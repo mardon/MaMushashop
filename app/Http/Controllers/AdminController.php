@@ -23,4 +23,18 @@ class AdminController extends Controller
         }
         return view('admin.orders', ['orders' => $orders]);
     }
+
+    public function detail($id)
+    {
+        $order = Order::with('customer','items')->findOrFail($id);
+        return view('admin.detail', ['order' => $order]);
+    }
+
+    public function status($id)
+    {
+        $order = Order::with('customer','items')->findOrFail($id);
+        $order->status = !($order->status);
+        $order->save();
+        return view('admin.detail', ['order' => $order]);
+    }
 }

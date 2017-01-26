@@ -20,4 +20,6 @@ Route::group(['middleware' => ['web']], function() {
 });
 Route::group(['prefix' => 'admin',  'middleware' => 'admin'],function () {
     Route::get('/', 'AdminController@index');
+    Route::get('detail/{id}', 'AdminController@detail');
+    Route::get('status/{id}', 'AdminController@status');
 });
