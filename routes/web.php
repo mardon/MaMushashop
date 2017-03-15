@@ -22,4 +22,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'admin'],function () {
     Route::get('/', 'AdminController@index');
     Route::get('detail/{id}', 'AdminController@detail');
     Route::get('status/{id}', 'AdminController@status');
+    Route::get('products', 'ProductController@index');
+    Route::get('product/edit/{id}', 'ProductController@edit');
+    Route::post('product/update/{id}', 'ProductController@update');
 });
