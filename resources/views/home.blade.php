@@ -26,10 +26,43 @@
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 <button type="submit"  class="btn btn-primary">Koupit</button>
                             </form>
+                            <a href="#" id="add" class="btn btn-primary" data-id="{{ $product->id }}">Koupit</a>
                         </div>
                     </div>
                 @endforeach
             </div>
         @endforeach
     </div>
+@stop
+
+@section('scripts')
+    $(document).ready(function() {
+
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+        $('a#add').click( function() {
+            var product_id = $(this).data('id');
+            var url = "/ajaxadd";
+
+            $.ajax({
+
+            type: "POST",
+            url: url,
+            data: { product_id: product_id },
+            success: function (msg) {
+            console.log(JSON.stringify(msg));
+            var obj = JSON.parse(JSON.stringify(msg));
+            $('.badge').html(obj.msg);
+
+            },
+            error: function (data) {
+            console.log('Error:', data);
+            }
+            });
+        });
+    });
 @stop

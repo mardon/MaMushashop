@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Jednoduchý eshop Laravel 5.3">
     <meta name="author" content="Mamusha">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="../../favicon.ico">
     <title>@yield('title', 'Jednoduchý shop Laravel 5.3')</title>
     <!-- Bootstrap core CSS -->
@@ -55,6 +56,9 @@
     $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
         $("#success-alert").slideUp(500);
     });
+</script>
+<script>
+    @yield('scripts')
 </script>
 </body>
 </html>

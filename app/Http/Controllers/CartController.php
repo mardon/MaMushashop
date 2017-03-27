@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use Session;
 
 class CartController extends Controller
 {
@@ -38,5 +39,22 @@ class CartController extends Controller
         }
         $request->session()->put('cart', $cartData);
         return redirect()->back()->with('message', 'Product Added Successfully!');
+    }
+
+    public function ajaxAdd(Request $request) {
+        $id = $request->input('product_id');
+        $session = $request->session();
+        $cartData = ($session->get('cart')) ? $session->get('cart') : array();
+        if (array_key_exists($id, $cartData)) {
+            $cartData[$id]['qty']++;
+        } else {
+            $cartData[$id] = array(
+                'qty' => 1
+            );
+        }
+        $request->session()->put('cart', $cartData);
+        $cart_qty =  Session::get('cart') ? array_sum(array_column(Session::get('cart'), 'qty')) : 0;
+        //return redirect()->back()->with('message', 'Product Added Successfully!');
+        return response()->json(['msg' => $cart_qty], 200);
     }
 }
