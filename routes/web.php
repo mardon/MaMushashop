@@ -5,6 +5,7 @@ Route::get('/', 'HomeController@index');
 Route::post('/addcart', 'CartController@postAdd');
 Route::post('/ajaxadd', 'CartController@ajaxAdd');
 Route::get('/cart','CartController@index');
+Route::get('/cartdelete/{id}', 'CartController@delete');
 
 Route::get('/checkout','CheckoutController@index');
 Route::post('/checkout', 'CheckoutController@add');

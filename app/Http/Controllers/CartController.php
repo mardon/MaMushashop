@@ -57,4 +57,26 @@ class CartController extends Controller
         //return redirect()->back()->with('message', 'Product Added Successfully!');
         return response()->json(['msg' => $cart_qty], 200);
     }
+
+    public function delete($id, Request $request)
+    {
+
+        $session = $request->session();
+        $cartData = $session->get('cart');
+
+        if (array_key_exists($id, $cartData)) {
+            unset($cartData[$id]);
+        }
+        $request->session()->put('cart', $cartData);
+        $cartTotal = 0;
+        foreach ($cartData as $cartItem) {
+            $cartTotal = $cartTotal+$cartItem['qty'];
+        }
+
+        $request->session()->put('total', $cartTotal);
+
+
+        return back();
+    }
+
 }
