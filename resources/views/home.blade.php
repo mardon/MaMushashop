@@ -24,7 +24,7 @@
                             <form method="POST" action="{{ URL::to('addcart') }}" class="form-inline" role="form">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <button type="submit"  class="btn btn-primary">Koupit</button>
+                                {{--<button type="submit"  class="btn btn-primary">Koupit</button>--}}
                             </form>
                             <a href="#" id="add" class="btn btn-primary" data-id="{{ $product->id }}">Koupit</a>
                         </div>
