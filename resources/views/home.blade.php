@@ -38,7 +38,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><span class="alert alert-success">Zboží přidáno do košíku</h4>
+                    <h4 class="modal-title">Zboží přidáno do košíku</h4>
                 </div>
                 <div class="modal-body">
                     <div class="modal-product"></div>
@@ -78,7 +78,7 @@
                 var obj = JSON.parse(JSON.stringify(msg));
                 $('.badge').html(obj.msg);
                 $('#add-modal .modal-product').html(product_name);
-                $('#add-modal .modal-price').html(product_price);
+                $('#add-modal .modal-price').html(product_price+' Kč');
                 $('#add-modal').modal();
 
                 },
